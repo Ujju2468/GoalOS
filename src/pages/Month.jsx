@@ -1,10 +1,11 @@
 // -----------------------------------Response1-----------------------------------------------------
-import Layout from "../components/layout/Layout";       //RES 2 just change this line.
+import Layout from "../components/layout/Layout";       //Res 2 changed this line.
+
 function Month() {
   return (
-    <div className="page">
+    <Layout>
       <h1>Month View</h1>
-    </div>
+    </Layout>
   );
 }
 

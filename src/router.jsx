@@ -7,6 +7,7 @@ import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
+
 const routes = [
   {
     path: "/",
