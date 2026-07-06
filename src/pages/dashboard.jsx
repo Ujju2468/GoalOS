@@ -1,3 +1,6 @@
+// --------------------------------------Response1-----------------------------------------------
+import Layout from "../components/layout/Layout";       //Res 2 changed this line.
+
 function Dashboard() {
   return (
     <div className="page">
@@ -7,3 +10,5 @@ function Dashboard() {
 }
 
 export default Dashboard;
+// --------------------------------------------RESPONSE1-----------------------------------------------
+

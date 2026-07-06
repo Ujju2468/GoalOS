@@ -1,14 +1,13 @@
 // -----------------------------------Response1-----------------------------------------------------
-
-import Layout from "../components/layout/Layout";       //Res 2 changed this line.
-
-function Settings() {
+import Layout from "../components/layout/Layout";       //RES 2 just change this line.
+function Month() {
   return (
-    <Layout>
-      <h1>Settings</h1>
-    </Layout>
+    <div className="page">
+      <h1>Month View</h1>
+    </div>
   );
 }
 
-export default Settings;
+export default Month;
+
 // -----------------------------------Response1-----------------------------------------------------

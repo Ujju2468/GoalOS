@@ -1,9 +1,15 @@
+// -----------------------------------Response1-----------------------------------------------------
+
+import Layout from "../components/layout/Layout";       //Res 2 changed this line.
+
 function DayPlanner() {
   return (
-    <div className="page">
+    <Layout>
       <h1>Day Planner</h1>
-    </div>
+    </Layout>
   );
 }
 
 export default DayPlanner;
+
+// -----------------------------------Response1-----------------------------------------------------

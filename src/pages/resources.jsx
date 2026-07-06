@@ -1,9 +1,14 @@
+// -----------------------------------Response1-----------------------------------------------------
+
+import Layout from "../components/layout/Layout";       //Res 2 changed this line.
+
 function Resources() {
   return (
-    <div className="page">
+    <Layout>
       <h1>Resources</h1>
-    </div>
+    </Layout>
   );
 }
 
 export default Resources;
+// -----------------------------------Response1-----------------------------------------------------

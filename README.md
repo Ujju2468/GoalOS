@@ -55,7 +55,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//RESPONSE 1    
+//---------------------------------------------------------------------------------RESPONSE 1    
 
 # GoalOS
 A modern personal goal management dashboard built using React.
@@ -147,4 +147,23 @@ goal-os/
 ├── package-lock.json
 ├── README.md
 └── vite.config.js
-<!-- ----------------------------------------------------res1 -->
+// ----------------------------------------------------res1 --------
+
+//-------------------------------------------------------res2-------------------
+## Response 2
+
+✔ Application Layout
+
+✔ Sidebar
+
+✔ Top Navigation
+
+✔ Responsive Shell
+
+✔ Active Navigation
+
+✔ Dashboard Layout
+
+Version
+
+v0.2.0
