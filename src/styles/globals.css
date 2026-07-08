@@ -454,3 +454,37 @@ font-size:14px;
 
 }
 /* RES 5 */
+
+.day-meta{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:18px;
+}
+
+.day-meta span{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:14px;
+color:#94A3B8;
+}
+
+.empty-month{
+grid-column:1/-1;
+background:#111827;
+padding:60px;
+border-radius:18px;
+border:1px dashed #3B82F6;
+text-align:center;
+}
+
+.empty-month h2{
+margin-bottom:15px;
+}
+
+.empty-month p{
+color:#94A3B8;
+}
+
+/* res 6 */
