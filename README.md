@@ -194,3 +194,19 @@ v0.3.0
 Version
 
 v0.4.0
+
+## Response 5
+
+Added
+
+Interactive Month View
+
+Calendar Grid
+
+Daily Preview
+
+Day Navigation
+
+Version
+
+v0.5.0
