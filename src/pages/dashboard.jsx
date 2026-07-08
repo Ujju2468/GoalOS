@@ -1,17 +1,17 @@
 // --------------------------------------Response3-----------------------------------------------
 import Layout from "../components/layout/Layout";
-
 import GoalHero from "../components/dashboard/GoalHero";
-
 import StatsCard from "../components/dashboard/StatsCard";
-
 import TodayMission from "../components/dashboard/TodayMission";
+import MonthsGrid from "../components/months/MonthsGrid";
 
 function Dashboard() {
   return (
     <Layout>
 
       <GoalHero />
+      
+      <MonthsGrid/>
 
       <section className="stats-grid">
 

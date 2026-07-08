@@ -181,3 +181,16 @@ v0.2.0
 Version
 
 v0.3.0
+
+## Response 4
+
+### Added
+
+- Data-driven month system
+- Month cards
+- Reusable month data
+- Interactive month navigation
+
+Version
+
+v0.4.0
