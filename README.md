@@ -224,3 +224,254 @@ v0.5.0
 Version
 
 v0.6.0
+
+# Architecture 
+roadmapConfig.js
+↓
+Global Rules
+↓
+roadmapData.js
+↓
+Daily Information
+↓
+Planner Page
+↓
+Dashboard
+↓
+Analytics
+↓
+Resources
+------------------------------------------------------------------------------------------------------
+# Architecture Evolution (Response 7)
+
+## Why GoalOS Changed
+
+When GoalOS started, the application was built around individual pages. Each page contained its own information and UI.
+
+### Previous Architecture
+
+```text
+Page
+│
+├── Dashboard
+│      ├── DSA Goal
+│      ├── GitHub Goal
+│      ├── Timeline
+│      └── Subject
+│
+├── Month
+│
+└── Day Planner
+       ├── DSA Goal
+       ├── Timeline
+       ├── Notes
+       └── Subject
+```
+
+### Problems with this approach
+
+* The same information is repeated in multiple places.
+* Updating one common rule requires editing many files.
+* Difficult to scale from a 60-day roadmap to a 90-day or 180-day roadmap.
+* Backend integration becomes harder because business logic is scattered throughout the UI.
+
+---
+
+## New Architecture (Response 7)
+
+GoalOS is now **data-driven**.
+
+```text
+roadmapConfig.js
+        │
+        ▼
+Global Rules
+        │
+        ▼
+roadmapData.js
+        │
+        ▼
+Daily Information
+        │
+        ▼
+Planner
+Dashboard
+Calendar
+Analytics
+Resources
+```
+
+### Responsibilities
+
+### roadmapConfig.js
+
+Contains information that rarely changes.
+
+Examples:
+
+* Total duration
+* Daily DSA target
+* GitHub push goal
+* Daily timetable
+* Development starting day
+
+### roadmapData.js
+
+Contains information that changes every day.
+
+Examples:
+
+* Subject
+* Topic
+* Milestone
+* Development topic
+* Weekly focus
+
+---
+
+## Example
+
+Instead of writing this sixty times:
+
+```text
+Day 1
+7 DSA Questions
+3 Revision Questions
+3-4 GitHub Pushes
+
+Day 2
+7 DSA Questions
+3 Revision Questions
+3-4 GitHub Pushes
+
+...
+
+Day 60
+7 DSA Questions
+3 Revision Questions
+3-4 GitHub Pushes
+```
+
+GoalOS now stores the rule only once.
+
+```javascript
+dsa: {
+    questionsPerDay: 7,
+    revisionPerDay: 3
+}
+
+github: {
+    minimum: 3,
+    target: 4
+}
+```
+
+Every page automatically reads those values.
+
+---
+
+## Why This Is Better
+
+Imagine changing:
+
+```text
+7 DSA Questions
+```
+
+to
+
+```text
+10 DSA Questions
+```
+
+### Old Approach
+
+Edit every planner or repeated section where the value appears.
+
+### New Approach
+
+```javascript
+questionsPerDay: 10
+```
+
+One change updates the entire application.
+
+---
+
+## Engineering Lesson
+
+A good application is **data-driven**, not **page-driven**.
+
+Instead of asking:
+
+> "How do I build this page?"
+
+ask:
+
+> "Where should this information live?"
+
+Once the data model is designed well, the UI becomes much simpler to build, maintain, and extend.
+
+---
+
+## Future Scalability
+
+Because GoalOS is configuration-driven, it can easily evolve into:
+
+* 90-Day Placement Planner
+* GATE Preparation Planner
+* UPSC Study Planner
+* Personal Habit Tracker
+* Multi-user web application with a backend
+
+without redesigning the entire frontend.
+
+---
+
+## Takeaway
+
+One of the biggest lessons from GoalOS is that **designing the data first makes every future feature easier to build**.
+
+This architecture is the foundation for the remaining versions of GoalOS and for the future backend implementation.
+------------------------------------------------------------------------------------------------------------
+
+
+## Response 7 (Part 1)
+
+### Added
+- `roadmapConfig.js`
+- `roadmapData.js`
+- Configurable roadmap engine
+- Daily roadmap structure
+- Separation of configuration and content
+
+### Version
+v0.7.0-alpha
+
+## Response 7 (Part 2)
+
+### Planner Engine
+
+GoalOS now generates the daily planner automatically.
+
+The planner calculates:
+
+- DSA question range
+- Revision targets
+- GitHub goals
+- Development start
+- Subject
+- Milestone
+- Timeline
+
+Instead of storing repeated information for every day, the planner combines:
+
+roadmapConfig.js
+
++
+
+roadmapData.js
+
+to generate each day's view.
+
+
