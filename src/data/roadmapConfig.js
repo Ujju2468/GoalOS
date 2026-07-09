@@ -22,7 +22,7 @@ export const roadmapConfig = {
 
     dsa: {
 
-        sheet: "Love Babbar 450",
+        sheet: "Love Babbar 450 DSA Sheet",
 
         questionsPerDay: 7,
 
