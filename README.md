@@ -475,3 +475,54 @@ roadmapData.js
 to generate each day's view.
 
 
+## Response 7 (Part 3)
+
+### Added
+
+- Planner overview dashboard
+- Progress percentage
+- Remaining days counter
+- Dynamic DSA range
+- GitHub target summary
+- Responsive planner layout
+- Planner engine completed
+
+### Engineering Concept
+
+Instead of storing repeated information inside every page, GoalOS now follows a **configuration-driven architecture**.
+
+```
+roadmapConfig
+        ↓
+roadmapData
+        ↓
+Planner
+Dashboard
+Resources
+Analytics
+```
+
+This makes the application easier to scale, easier to maintain, and ready for backend integration.
+
+
+## RES 8 (Part 1)
+Design System
+
+GoalOS uses a centralized CSS design system.
+
+All primary colors, spacing, borders, shadows, transitions, and radius values are defined inside :root variables.
+
+Benefits:
+
+• One place to change colors
+• Consistent UI
+• Easier maintenance
+• Better scalability
+
+Example:
+
+--primary
+--surface
+--text
+--border
+--transition
