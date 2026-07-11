@@ -1,100 +1,51 @@
-// import january from "../../data/january";
-
-// import DayCard from "./DayCard";
-
-// function CalendarGrid(){
-
-// return(
-
-// <section className="calendar-grid">
-
-// {
-
-// january.map((item)=>(
-
-// <DayCard
-
-// key={item.day}
-
-// item={item}
-
-// />
-
-// ))
-
-// }
-
-// </section>
-
-// );
-
-// }
-
-// export default CalendarGrid;
-//res 5
-// //res 6
-// import DayCard from "./DayCard";
-
-// function CalendarGrid({ data }) {
-//   return (
-//     <section className="calendar-grid">
-//       {data.length === 0 ? (
-//         <div className="empty-month">
-//           <h2>No Plan Added Yet</h2>
-
-//           <p>
-//             This month is waiting for your goals.
-//           </p>
-//         </div>
-//       ) : (
-//         data.map((item) => (
-//           <DayCard
-//             key={item.day}
-//             item={item}
-//           />
-//         ))
-//       )}
-//     </section>
-//   );
-// }
-
-// export default CalendarGrid;
-
-
-// -----------------------
+import { getMonthDays } from "../../utils/roadmapHelpers";
+import { useParams } from "react-router-dom";
 import DayCard from "./DayCard";
 
-function CalendarGrid({ data }) {
-  return (
+function CalendarGrid() {
+
+  const { month } = useParams();
+
+  const data = getMonthDays(month);
+
+  if(data.length===0){
+
+    return(
+
+      <div className="empty-month">
+
+        <h2>No roadmap available.</h2>
+
+      </div>
+
+    );
+
+  }
+
+  return(
+
     <section className="calendar-grid">
 
-      {data.length === 0 ? (
+      {
 
-        <div className="empty-month">
+      data.map(day=>(
 
-          <h2>No Plan Added Yet</h2>
+        <DayCard
 
-          <p>
-            This month is waiting for your goals.
-          </p>
+          key={day.day}
 
-        </div>
+          day={day}
 
-      ) : (
+        />
 
-        data.map((item) => (
+      ))
 
-          <DayCard
-            key={item.day}
-            day={item}
-          />
-
-        ))
-
-      )}
+      }
 
     </section>
+
   );
+
 }
 
 export default CalendarGrid;

@@ -538,3 +538,24 @@ Dashboard changes and mission
 ## Res 8 (Part 4)
 
 calander update and more styles plus added a motivation quote 
+
+## res  9 new arch and helpers concept
+## roadmapHelpers.js
+GoalOS uses helper functions to keep business logic outside React components.
+Examples:
+```js
+getDay(12)
+getMonthDays("january")
+getQuestionRange(8)
+getProgress(18)
+getRemainingDays(18)
+getPreviousDay(18)
+getNextDay(18)
+```
+### Benefits
+
+- Cleaner components
+- Reusable logic
+- Easier testing
+- Better backend integration
+- Professional architecture

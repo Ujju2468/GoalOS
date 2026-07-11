@@ -49,7 +49,6 @@ function Month() {
           onClick={() => navigate("/dashboard")}
         >
           <ArrowLeft size={18} />
-
           Back
         </button>
 
@@ -58,7 +57,7 @@ function Month() {
         </h1>
       </div>
 
-      <CalendarGrid data={data} />
+      <CalendarGrid data={data}/>
     </Layout>
   );
 }

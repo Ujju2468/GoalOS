@@ -278,20 +278,31 @@
 
 // --------------------------------------------res 7 part 3-------------------------
 import { useMemo } from "react";
-import { useParams } from "react-router-dom";
 
+import {
+    useParams,
+    useNavigate
+} from "react-router-dom";
 import Layout from "../components/layout/Layout";
 
-import roadmapData from "../data/roadmapData";
+import {
+  getDay,
+  getQuestionRange,
+  getProgress,
+  getRemainingDays,
+  isDevelopmentStarted,
+  getPreviousDay,
+  getNextDay
+} from "../utils/roadmapHelpers";
+
 import { roadmapConfig } from "../data/roadmapConfig";
 
 function DayPlanner() {
   const { day } = useParams();
-
   const currentDay = Number(day);
-
+  const navigate = useNavigate();
   const today = useMemo(() => {
-    return roadmapData.find((item) => item.day === currentDay);
+    return getDay(currentDay);
   }, [currentDay]);
 
   if (!today) {
@@ -307,21 +318,23 @@ function DayPlanner() {
     );
   }
 
-  const startQuestion =
-    (today.day - 1) * roadmapConfig.dsa.questionsPerDay + 1;
+  const questionRange =
+    getQuestionRange(today.day);
 
-  const endQuestion =
-    startQuestion + roadmapConfig.dsa.questionsPerDay - 1;
-
-  const developmentStarted =
-    today.day >= roadmapConfig.development.startsOnDay;
-
-  const progress = Math.round(
-    (today.day / roadmapConfig.duration) * 100
-  );
+  const progress =
+    getProgress(today.day);
 
   const daysRemaining =
-    roadmapConfig.duration - today.day;
+    getRemainingDays(today.day);
+
+  const developmentStarted =
+    isDevelopmentStarted(today.day);
+
+  const previousDay =
+    getPreviousDay(today.day);
+
+  const nextDay =
+    getNextDay(today.day);
 
   return (
     <Layout>
@@ -367,7 +380,7 @@ function DayPlanner() {
             <h3>DSA Today</h3>
 
             <h2>
-              {startQuestion} - {endQuestion}
+              {questionRange.start}-{questionRange.end}
             </h2>
 
             <p>{roadmapConfig.dsa.sheet}</p>
@@ -430,7 +443,7 @@ function DayPlanner() {
             <span>✅ Solve DSA Questions</span>
 
             <strong>
-              {startQuestion} - {endQuestion}
+              {questionRange.start} - {questionRange.end}
             </strong>
           </div>
 
@@ -484,6 +497,31 @@ function DayPlanner() {
             </div>
           ))}
         </section>
+
+        {/*New section res 9*/}
+        
+        <section className="planner-navigation">
+          <button
+disabled={!previousDay}
+onClick={() =>
+previousDay &&
+navigate(`/planner/${previousDay.day}`)
+}
+>
+← Previous Day
+</button>
+          <button
+disabled={!nextDay}
+onClick={() =>
+nextDay &&
+navigate(`/planner/${nextDay.day}`)
+}
+>
+Next Day →
+</button>
+        </section>
+
+
 
         {/* ================= NOTES ================= */}
 

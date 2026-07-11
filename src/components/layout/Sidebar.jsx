@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+      import { Link } from "react-router-dom";
+
 import {
   LayoutDashboard,
   CalendarDays,
@@ -44,9 +46,15 @@ const menu = [
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <div className="logo">
+      {/* <div className="logo">
         Goal<span>OS</span>
-      </div>
+      </div> */}
+      <Link
+    to="/dashboard"
+    className="logo"
+>
+    GoalOS
+</Link>
 
       <nav>
         {menu.map((item) => {

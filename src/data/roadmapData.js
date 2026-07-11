@@ -9,6 +9,8 @@ const roadmapData = [
 {
     day:1,
 
+    month:"january",
+
     week:1,
 
     subject:"OOPS",
@@ -26,6 +28,8 @@ const roadmapData = [
 
     week:1,
 
+    month:"january",
+
     subject:"OOPS",
 
     topic:"Constructors",
@@ -40,6 +44,8 @@ const roadmapData = [
     day:3,
 
     week:1,
+
+    month:"january",
 
     subject:"OOPS",
 
@@ -56,6 +62,8 @@ const roadmapData = [
 
     week:1,
 
+    month:"january",
+
     subject:"OOPS",
 
     topic:"Inheritance",
@@ -70,6 +78,8 @@ const roadmapData = [
     day:5,
 
     week:1,
+
+    month:"january",
 
     subject:"OOPS",
 
@@ -86,6 +96,8 @@ const roadmapData = [
 
     week:1,
 
+    month:"january",
+
     subject:"OOPS",
 
     topic:"Abstraction",
@@ -100,6 +112,8 @@ const roadmapData = [
     day:7,
 
     week:1,
+
+    month:"january",    
 
     subject:"OOPS",
 

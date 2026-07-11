@@ -1897,3 +1897,60 @@ grid-template-columns:1fr;
 }
 
 /* ------------------------------------------------- */
+
+
+/* =======================================================
+   RESPONSE 9 PART 3
+======================================================= */
+
+.planner-navigation{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:35px 0;
+
+}
+
+.planner-navigation button{
+
+background:#1E293B;
+
+color:white;
+
+border:1px solid #334155;
+
+padding:14px 26px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.planner-navigation button:hover:not(:disabled){
+
+background:#2563EB;
+
+border-color:#2563EB;
+
+transform:translateY(-3px);
+
+}
+
+.planner-navigation button:disabled{
+
+opacity:.35;
+
+cursor:not-allowed;
+
+}
+
+/* ------------------------------------------------------ */
