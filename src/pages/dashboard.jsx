@@ -4,6 +4,7 @@ import GoalHero from "../components/dashboard/GoalHero";
 import StatsCard from "../components/dashboard/StatsCard";
 import TodayMission from "../components/dashboard/TodayMission";
 import MonthsGrid from "../components/months/MonthsGrid";
+import motivation from "../data/motivation";
 
 function Dashboard() {
   return (

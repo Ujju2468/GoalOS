@@ -1,74 +1,179 @@
+// // import { useNavigate } from "react-router-dom";
+// // function DayCard({ item }) {
+// // const navigate = useNavigate();
+// // return(
+// // <div
+// // className="day-card"
+// // onClick={()=>navigate(`/planner/${item.day}`)}
+// // >
+// // <h2>
+// // {item.day}
+// // </h2>
+// // <p>
+// // {item.title}
+// // </p>
+// // </div>
+// // );
+// // }
+// // export default DayCard;
+// //res 5
+
+
+// //res 6
 // import { useNavigate } from "react-router-dom";
+
+// import {
+//   Clock3,
+//   BookOpen,
+//   CheckCircle2,
+// } from "lucide-react";
+
 // function DayCard({ item }) {
-// const navigate = useNavigate();
-// return(
-// <div
-// className="day-card"
-// onClick={()=>navigate(`/planner/${item.day}`)}
-// >
-// <h2>
-// {item.day}
-// </h2>
-// <p>
-// {item.title}
-// </p>
-// </div>
-// );
+//   const navigate = useNavigate();
+
+//   return (
+//     <div
+//       className="day-card"
+//       onClick={() => navigate(`/planner/${item.day}`)}
+//     >
+//       <h2>{item.day}</h2>
+
+//       <h3>{item.title}</h3>
+
+//       <div className="day-meta">
+
+//         <span>
+
+//           <Clock3 size={15} />
+
+//           {item.time}
+
+//         </span>
+
+//         <span>
+
+//           <CheckCircle2 size={15} />
+
+//           {item.tasks} Tasks
+
+//         </span>
+
+//         <span>
+
+//           <BookOpen size={15} />
+
+//           {item.resources} Links
+
+//         </span>
+
+//       </div>
+//     </div>
+//   );
 // }
+
 // export default DayCard;
-//res 5
-
-
-//res 6
-import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import {
-  Clock3,
-  BookOpen,
-  CheckCircle2,
+Clock3,
+BookOpen,
+CircleCheck,
+Target
 } from "lucide-react";
 
-function DayCard({ item }) {
-  const navigate = useNavigate();
+function DayCard({ day }) {
 
-  return (
-    <div
-      className="day-card"
-      onClick={() => navigate(`/planner/${item.day}`)}
-    >
-      <h2>{item.day}</h2>
+const progress =
+Math.round((day.day / 60) * 100);
 
-      <h3>{item.title}</h3>
+const today =
+day.day === 1; // later backend
 
-      <div className="day-meta">
+return (
 
-        <span>
+<Link
+to={`/planner/${day.day}`}
+className={`day-card ${today ? "today-card" : ""}`}
+>
 
-          <Clock3 size={15} />
+<div className="day-top">
 
-          {item.time}
+<h2>
+{day.day}
+</h2>
 
-        </span>
+{
 
-        <span>
+today &&
 
-          <CheckCircle2 size={15} />
+<span className="today-pill">
+TODAY
+</span>
 
-          {item.tasks} Tasks
+}
 
-        </span>
+</div>
 
-        <span>
+<h3>
 
-          <BookOpen size={15} />
+{day.topic}
 
-          {item.resources} Links
+</h3>
 
-        </span>
+<div className="day-progress">
 
-      </div>
-    </div>
-  );
+<div
+className="day-progress-fill"
+style={{
+width:`${progress}%`
+}}
+/>
+
+</div>
+
+<div className="day-info">
+
+<span>
+
+<BookOpen size={15}/>
+
+{day.subject}
+
+</span>
+
+<span>
+
+<Target size={15}/>
+
+Q {((day.day-1)*7)+1}
+-
+{((day.day-1)*7)+7}
+
+</span>
+
+<span>
+
+<Clock3 size={15}/>
+
+Week {day.week}
+
+</span>
+
+</div>
+
+<div className="day-status">
+
+<CircleCheck
+size={17}
+/>
+
+Pending
+
+</div>
+
+</Link>
+
+);
+
 }
 
 export default DayCard;

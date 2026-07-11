@@ -1,13 +1,23 @@
-function StatsCard({ title, value }) {
-  return (
-    <div className="stats-card">
+function StatsCard({
 
-      <h3>{value}</h3>
+title,
 
-      <p>{title}</p>
+value
 
-    </div>
-  );
+}){
+
+return(
+
+<div className="stats-card">
+
+<h3>{value}</h3>
+
+<p>{title}</p>
+
+</div>
+
+);
+
 }
 
 export default StatsCard;

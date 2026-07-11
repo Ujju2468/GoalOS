@@ -526,3 +526,15 @@ Example:
 --text
 --border
 --transition
+
+## RES 8 (Part 2)
+
+Side bar and top bar ui premium 
+
+## Res 8 (Part 3)
+
+Dashboard changes and mission 
+
+## Res 8 (Part 4)
+
+calander update and more styles plus added a motivation quote 

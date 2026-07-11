@@ -1,21 +1,76 @@
+import { CheckCircle2 } from "lucide-react";
+
 function TodayMission() {
-  return (
-    <section className="mission">
 
-      <h2>Today's Mission</h2>
+const tasks=[
 
-      <h3>Build Authentication API</h3>
+"7 New DSA Questions",
 
-      <p>Estimated Time : 4 Hours</p>
+"3 Revision Problems",
 
-      <button>
+"Computer Networks",
 
-        Continue Working
+"3 GitHub Pushes",
 
-      </button>
+"Development Practice"
 
-    </section>
-  );
+];
+
+return(
+
+<section className="mission">
+
+<h2>
+
+Today's Mission
+
+</h2>
+
+<p>
+
+Complete today's roadmap and continue your streak.
+
+</p>
+
+<div className="mission-list">
+
+{
+
+tasks.map(task=>(
+
+<div
+key={task}
+className="mission-item"
+>
+
+<CheckCircle2
+size={18}
+/>
+
+<span>
+
+{task}
+
+</span>
+
+</div>
+
+))
+
+}
+
+</div>
+
+<button>
+
+Mark Day Complete
+
+</button>
+
+</section>
+
+);
+
 }
 
 export default TodayMission;
