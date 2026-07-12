@@ -223,3 +223,27 @@ export function clearStorage() {
     localStorage.removeItem(NOTES_KEY);
 
 }
+
+
+export function getCurrentStreak() {
+
+  const completed =
+    getCompletedDays().sort((a, b) => a - b);
+
+  let streak = 0;
+
+  for (let i = completed.length - 1; i >= 0; i--) {
+
+    if (
+      completed[i] === completed[completed.length - 1] - streak
+    ) {
+      streak++;
+    } else {
+      break;
+    }
+
+  }
+
+  return streak;
+
+}

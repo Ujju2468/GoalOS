@@ -280,7 +280,8 @@
 import { useMemo, useState, useEffect } from "react";
 import {
   useParams,
-  useNavigate
+  useNavigate,
+  Link
 } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 
@@ -302,13 +303,18 @@ import {
   saveNotes
 } from "../utils/storage";
 
+
+
 function DayPlanner() {
   const { day } = useParams();
+
   const currentDay = Number(day);
+
   const navigate = useNavigate();
-  const today = useMemo(() => {
-    return getDay(currentDay);
-  }, [currentDay]);
+
+  const today = useMemo(() => getDay(currentDay), [currentDay]);
+
+  
 
   if (!today) {
     return (
@@ -341,27 +347,39 @@ function DayPlanner() {
   const nextDay =
     getNextDay(today.day);
 
+  const [notes, setNotes] = useState("");
+
   const [completed, setCompleted] =
     useState(false);
 
-  const [notes, setNotes] =
-    useState("");
+    useEffect(() => {
+  if (!today) return;
 
-  useEffect(() => {
+  setCompleted(isCompleted(today.day));
+  setNotes(getNotes(today.day));
+}, [today]);
 
-    setCompleted(
-      isCompleted(today.day)
-    );
+useEffect(() => {
+  if (!today) return;
 
-    setNotes(
-      getNotes(today.day)
-    );
-
-  }, [today.day]);
-
+  saveNotes(today.day, notes);
+}, [notes, today]);
   return (
     <Layout>
       <div className="planner">
+
+        <div className="planner-topbar">
+
+          <Link
+            to="/month/january"
+            className="back-btn"
+          >
+            ← Back to January
+          </Link>
+
+        </div>
+
+
         {/* ================= HEADER ================= */}
 
         <section className="planner-header">
@@ -580,16 +598,7 @@ function DayPlanner() {
           <textarea
             rows={10}
             value={notes}
-            onChange={(e) => {
-
-              setNotes(e.target.value);
-
-              saveNotes(
-                today.day,
-                e.target.value
-              );
-
-            }}
+            onChange={(e) => setNotes(e.target.value)}
             placeholder="Write today's learnings, doubts, interview questions..."
           />
         </section>

@@ -2,74 +2,74 @@ import { CheckCircle2 } from "lucide-react";
 
 function TodayMission() {
 
-const tasks=[
+    const tasks = [
 
-"7 New DSA Questions",
+        "7 New DSA Questions",
 
-"3 Revision Problems",
+        "3 Revision Problems",
 
-"Computer Networks",
+        "Computer Networks",
 
-"3 GitHub Pushes",
+        "3 GitHub Pushes",
 
-"Development Practice"
+        "Development Practice"
 
-];
+    ];
 
-return(
+    return (
 
-<section className="mission">
+        <section className="mission">
 
-<h2>
+            <h2>
 
-Today's Mission
+                Today's Mission
 
-</h2>
+            </h2>
 
-<p>
+            <p>
 
-Complete today's roadmap and continue your streak.
+                Complete today's roadmap and continue your streak.
 
-</p>
+            </p>
 
-<div className="mission-list">
+            <div className="mission-list">
 
-{
+                {
 
-tasks.map(task=>(
+                    tasks.map(task => (
 
-<div
-key={task}
-className="mission-item"
->
+                        <div
+                            key={task}
+                            className="mission-item"
+                        >
 
-<CheckCircle2
-size={18}
-/>
+                            <CheckCircle2
+                                size={18}
+                            />
 
-<span>
+                            <span>
 
-{task}
+                                {task}
 
-</span>
+                            </span>
 
-</div>
+                        </div>
 
-))
+                    ))
 
-}
+                }
 
-</div>
+            </div>
 
-<button>
+            <button>
 
-Mark Day Complete
+                Mark Day Complete
 
-</button>
+            </button>
 
-</section>
+        </section>
 
-);
+    );
 
 }
 
