@@ -277,11 +277,10 @@
 
 
 // --------------------------------------------res 7 part 3-------------------------
-import { useMemo } from "react";
-
+import { useMemo, useState, useEffect } from "react";
 import {
-    useParams,
-    useNavigate
+  useParams,
+  useNavigate
 } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 
@@ -296,6 +295,12 @@ import {
 } from "../utils/roadmapHelpers";
 
 import { roadmapConfig } from "../data/roadmapConfig";
+import {
+  completeDay,
+  isCompleted,
+  getNotes,
+  saveNotes
+} from "../utils/storage";
 
 function DayPlanner() {
   const { day } = useParams();
@@ -335,6 +340,24 @@ function DayPlanner() {
 
   const nextDay =
     getNextDay(today.day);
+
+  const [completed, setCompleted] =
+    useState(false);
+
+  const [notes, setNotes] =
+    useState("");
+
+  useEffect(() => {
+
+    setCompleted(
+      isCompleted(today.day)
+    );
+
+    setNotes(
+      getNotes(today.day)
+    );
+
+  }, [today.day]);
 
   return (
     <Layout>
@@ -499,28 +522,54 @@ function DayPlanner() {
         </section>
 
         {/*New section res 9*/}
-        
+
         <section className="planner-navigation">
           <button
-disabled={!previousDay}
-onClick={() =>
-previousDay &&
-navigate(`/planner/${previousDay.day}`)
-}
->
-← Previous Day
-</button>
+            disabled={!previousDay}
+            onClick={() =>
+              previousDay &&
+              navigate(`/planner/${previousDay.day}`)
+            }
+          >
+            ← Previous Day
+          </button>
           <button
-disabled={!nextDay}
-onClick={() =>
-nextDay &&
-navigate(`/planner/${nextDay.day}`)
-}
->
-Next Day →
-</button>
+            disabled={!nextDay}
+            onClick={() =>
+              nextDay &&
+              navigate(`/planner/${nextDay.day}`)
+            }
+          >
+            Next Day →
+          </button>
         </section>
 
+
+        <section className="planner-card">
+
+          <h2>Daily Progress</h2>
+
+          <button
+            className="complete-btn"
+            disabled={completed}
+            onClick={() => {
+
+              completeDay(today.day);
+
+              setCompleted(true);
+
+            }}
+          >
+
+            {
+              completed
+                ? "✅ Completed"
+                : "Mark Day Complete"
+            }
+
+          </button>
+
+        </section>
 
 
         {/* ================= NOTES ================= */}
@@ -530,7 +579,18 @@ Next Day →
 
           <textarea
             rows={10}
-            placeholder="Write today's learnings, doubts, important concepts, interview questions, or anything worth remembering..."
+            value={notes}
+            onChange={(e) => {
+
+              setNotes(e.target.value);
+
+              saveNotes(
+                today.day,
+                e.target.value
+              );
+
+            }}
+            placeholder="Write today's learnings, doubts, interview questions..."
           />
         </section>
       </div>
