@@ -1,4 +1,7 @@
-import { Search, Bell, UserCircle } from "lucide-react";
+import SearchBar from "../search/SearchBar";
+import {  Bell, UserCircle } from "lucide-react";
+
+
 
 function Topbar() {
   return (
@@ -6,14 +9,12 @@ function Topbar() {
       <div>
         <h2>Goal Dashboard</h2>
 
-        <p>Welcome back 👋</p>
+        <p>Come true your goals by staying consistent.</p>
       </div>
 
       <div className="top-icons">
-        <Search />
-
+        <SearchBar/>
         <Bell />
-
         <UserCircle />
       </div>
     </header>
