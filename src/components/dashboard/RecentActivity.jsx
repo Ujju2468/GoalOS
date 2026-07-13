@@ -14,19 +14,30 @@ function RecentActivity() {
                 <strong>{streak} Days</strong>
             </div>
             {
-                recent.length === 0 ? (<p>No completed days yet.</p>)
-                    : (recent.map(day => (
-                        <div
-                            key={day}
-                            className="activity-row"
-                        >
-                            <span>
-                                ✅ Day {day}
-                            </span>
-                            <small>
-                                Completed
-                            </small>
-                        </div>)))}
+                    recent.length === 0 ? (
+                        <div className="empty-state">
+                            <h2>🚀</h2>
+
+                            <h3>Your journey starts today!</h3>
+
+                            <p>
+                                Complete Day 1 to begin tracking your progress.
+                            </p>
+                        </div>
+                    ) : (
+                        recent.map(day => (
+                            <div
+                                key={day}
+                                className="activity-row"
+                            >
+                                <span>
+                                    ✅ Day {day}
+                                </span>
+                                <small>
+                                    Completed
+                                </small>
+                            </div>
+                        )))}
         </section>
     );
 }
