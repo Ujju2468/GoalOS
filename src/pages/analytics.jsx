@@ -1,5 +1,7 @@
 import Layout from "../components/layout/Layout";
 import { getDashboardStats } from "../utils/dashboardHelpers";
+import SubjectProgress from "../components/analytics/SubjectProgress";
+import WeeklyProgress from "../components/analytics/WeeklyProgress";
 
 function Analytics() {
     const stats = getDashboardStats();
@@ -44,34 +46,11 @@ function Analytics() {
                 <div className="analytics-grid">
                     <div className="planner-card">
                         <h2>Weekly Progress</h2>
-                        <div className="progress-bar">
-                            <div
-                                className="progress-fill"
-                                style={{
-                                    width: `${stats.progress}%`
-                                }}
-                            />
-                        </div>
-                        <p>{stats.progress}% Completed</p>
+                        <WeeklyProgress />
                     </div>
                     <div className="planner-card">
                         <h2>Subject Progress</h2>
-                        <div className="subject-progress">
-                            <span>OOPS</span>
-                            <strong>100%</strong>
-                        </div>
-                        <div className="subject-progress">
-                            <span>OS</span>
-                            <strong>0%</strong>
-                        </div>
-                        <div className="subject-progress">
-                            <span>DBMS</span>
-                            <strong>0%</strong>
-                        </div>
-                        <div className="subject-progress">
-                            <span>CN</span>
-                            <strong>0%</strong>
-                        </div>
+                        <SubjectProgress />
                     </div>
                 </div>
                 {/* Bottom Section */}
