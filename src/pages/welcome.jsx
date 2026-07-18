@@ -1,25 +1,32 @@
-import { useNavigate } from "react-router-dom";
+import AnimatedBackground from "../components/welcome/AnimatedBackground";
+import Hero from "../components/welcome/Hero";
+import FloatingCards from "../components/welcome/FloatingCards";
+import "../styles/welcome.css";
+import MouseGlow from "../components/welcome/MouseGlow";
 
-function Welcome() {
-  const navigate = useNavigate();
+export default function Welcome() {
 
   return (
-    <div className="welcome-page">
-      <div className="welcome-card">
-        <h1>GoalOS</h1>
 
-        <h2>Welcome to Your Journey</h2>
+    <main
+      className="welcome-page"
+      onMouseMove={(e) => {
+        const glow = document.querySelector(".mouse-glow");
+        if (glow) {
+          glow.style.left = e.clientX + "px";
+          glow.style.top = e.clientY + "px";
+        }
+      }}
+    >
+      <AnimatedBackground />
 
-        <p>
-          Plan every day, stay consistent, and achieve your long-term goals.
-        </p>
+      <div className="welcome-overlay" />
 
-        <button onClick={() => navigate("/dashboard")}>
-          Begin Journey
-        </button>
-      </div>
-    </div>
+      <FloatingCards />
+      <Hero />
+      <MouseGlow />
+    </main>
+
   );
-}
 
-export default Welcome;
+}
